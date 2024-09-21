@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AddPet from './AddPet';
+import PetList from './PetList';
+import PetDetails from './PetDetails'; 
+import UpdatePet from './UpdatePet';
+import Home from './Home';  
+import './index.css';
+
+
 
 function App() {
+ 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+      <h1 className="text-center text-4xl font-bold mb-6">Pet Store App</h1>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path='/pets' element={<PetList/>}/>
+        <Route path='/pets/:id' element={<PetDetails/>}/>
+        <Route path='/addPet' element={<AddPet/>}/>
+        <Route path='/update/:id' element={<UpdatePet/>}/>
+
+      </Routes>
+      </div>
+    </Router>
   );
 }
 
